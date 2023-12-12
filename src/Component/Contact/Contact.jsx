@@ -1,5 +1,6 @@
 import emailjs from '@emailjs/browser';
 import { useRef } from "react";
+import Swal from 'sweetalert2';
 
 const Contact = () => {
 
@@ -10,7 +11,12 @@ const Contact = () => {
 
     emailjs.sendForm('service_slyq5ox', 'template_ikap1b5', form.current, '6jcs-sDEANY71iiBa')
       .then((result) => {
-          console.log(result.text);
+        console.log(result.text)
+        Swal.fire({
+            title: "Good job!",
+            text: "Your Message Sent!",
+            icon: "success"
+          });
       }, (error) => {
           console.log(error.text);
       });
